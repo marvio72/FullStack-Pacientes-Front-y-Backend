@@ -16,7 +16,9 @@ function App() {
       clienteAxios
         .get('/pacientes')
         .then((respuesta) => {
-          console.log(respuesta);
+          // console.log(respuesta.data);
+          // colocar en el state el resultado
+          guardarCitas(respuesta.data);
         })
         .catch((error) => {
           console.log(error);
