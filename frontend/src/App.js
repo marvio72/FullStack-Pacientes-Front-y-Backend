@@ -10,28 +10,32 @@ import Cita from './components/Cita';
 function App() {
   // State de la app
   const [citas, guardarCitas] = useState([]);
+  const [consultar, guardarConsultar] = useState(true);
 
   useEffect(() => {
-    const consultarAPI = () => {
-      clienteAxios
-        .get('/pacientes')
-        .then((respuesta) => {
-          // console.log(respuesta.data);
-          // colocar en el state el resultado
-          guardarCitas(respuesta.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    consultarAPI();
-  }, []);
+    if (consultar) {
+      const consultarAPI = () => {
+        clienteAxios
+          .get('/pacientes')
+          .then((respuesta) => {
+            // colocar en el state el resultado
+            guardarCitas(respuesta.data);
+            // deshabilitar la consulta
+            guardarConsultar(false);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+      consultarAPI();
+    }
+  }, [consultar]);
 
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={() => <Pacientes citas={citas} />} />
-        <Route exact path="/nueva" component={NuevaCita} />
+        <Route exact path="/nueva" component={() => <NuevaCita guardarConsultar={guardarConsultar} />} />
         <Route exact path="/cita/:id" component={Cita} />
       </Switch>
     </Router>
