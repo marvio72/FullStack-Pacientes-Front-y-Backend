@@ -1,7 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const NuevaCita = () => {
+  // Generar State como objeto
+  const [cita, guardarCita] = useState({
+    nombre: '',
+    propietario: '',
+    fecha: '',
+    hora: '',
+    telefono: '',
+    sintomas: '',
+  });
+
+  // Lea los datos del formulario
+  const actualizarState = (e) => {
+    // console.log(e.target.name);
+    // console.log(e.target.value);
+    guardarCita({
+      ...cita,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Enviar una petición a la API
+
   return (
     <Fragment>
       <h1 className="my-5">Nueva Cita</h1>
@@ -18,7 +40,14 @@ const NuevaCita = () => {
         <form className="bg-white p-5 bordered">
           <div className="form-group">
             <label htmlFor="nombre">Nombre Mascota</label>
-            <input type="text" className="form-control form-control-lg" id="nombre" name="nombre" placeholder="Nombre Mascota" />
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              id="nombre"
+              name="nombre"
+              placeholder="Nombre Mascota"
+              onChange={actualizarState}
+            />
           </div>
 
           <div className="form-group">
@@ -29,30 +58,43 @@ const NuevaCita = () => {
               id="propietario"
               name="propietario"
               placeholder="Nombre Propietario"
+              onChange={actualizarState}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="telefono">Teléfono</label>
-            <input type="tel" className="form-control form-control-lg" id="telefono" name="telefono" placeholder="Teléfono" />
+            <input
+              type="tel"
+              className="form-control form-control-lg"
+              id="telefono"
+              name="telefono"
+              placeholder="Teléfono"
+              onChange={actualizarState}
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="fecha">Fecha Alta</label>
-            <input type="date" className="form-control form-control-lg" id="fecha" name="fecha" />
+            <input type="date" className="form-control form-control-lg" id="fecha" name="fecha" onChange={actualizarState} />
           </div>
 
           <div className="form-group">
             <label htmlFor="hora">Hora Alta</label>
-            <input type="time" className="form-control form-control-lg" id="hora" name="hora" />
+            <input type="time" className="form-control form-control-lg" id="hora" name="hora" onChange={actualizarState} />
           </div>
 
           <div className="form-group">
             <label htmlFor="sintomas">Síntomas</label>
-            <textarea className="form-control" name="sintomas" rows="6"></textarea>
+            <textarea className="form-control" name="sintomas" rows="6" onChange={actualizarState}></textarea>
           </div>
 
-          <input type="submit" className="btn btn-primary mt-3 w-100 p-3 text-uppercase font-weight-bold" value="Crear Cita" />
+          <input
+            type="submit"
+            className="btn btn-primary mt-3 w-100 p-3 text-uppercase font-weight-bold"
+            value="Crear Cita"
+            onChange={actualizarState}
+          />
         </form>
       </div>
     </Fragment>
