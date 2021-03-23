@@ -1,0 +1,26 @@
+{
+  "name": "pacientes-api-fullstack",
+  "version": "1.0.0",
+  "description": "Backend en Mongo y Express creando una API de pacientes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marvio72/API-PACIENTES-FULLSTACK.git"
+  },
+  "author": "Ing. Marco Ruvalcaba Espinoza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marvio72/API-PACIENTES-FULLSTACK/issues"
+  },
+  "homepage": "https://github.com/marvio72/API-PACIENTES-FULLSTACK#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
