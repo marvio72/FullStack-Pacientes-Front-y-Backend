@@ -1,0 +1,14 @@
+{
+  "name": "fullstackjs-desktop",
+  "version": "1.0.0",
+  "description": "Aplicación de Electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Marco Ruvalcaba",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^12.0.1"
+  }
+}
