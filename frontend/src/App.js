@@ -44,7 +44,7 @@ function App() {
 
             // console.log(cita)
 
-            return <Cita cita={cita[0]} />;
+            return <Cita cita={cita[0]} guardarConsultar={guardarConsultar} />;
           }}
         />
       </Switch>
