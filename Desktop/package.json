@@ -4,11 +4,14 @@
   "description": "Aplicación de Electron",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder -m"
   },
   "author": "Marco Ruvalcaba",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^12.0.1"
+    "electron": "^12.0.1",
+    "electron-builder": "^22.10.5"
   }
 }
+
