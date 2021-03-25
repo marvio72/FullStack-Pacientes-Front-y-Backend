@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
@@ -9,8 +9,6 @@
     "axios": "^0.21.1",
     "concurrently": "^6.0.0",
     "cross-env": "^7.0.3",
-    "elecron": "0.0.1-security",
-    "electron-builder": "^22.10.5",
     "electron-is-dev": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -21,15 +19,27 @@
     "wait-on": "^5.3.0",
     "web-vitals": "^1.1.1"
   },
+  "devDependencies": {
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5"
+  },
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "react-test": "react-scripts test --env=jsdom",
     "react-eject": "react-scripts eject",
-    "electron-build": "electron-builder",
-    "release": "yarn react-build && electron-builder --publish=always",
-    "build": "yarn react-build && yarn electron-build",
+    "electron-build": "electron-builder -m",
+    "release": "react-build && electron-builder --publish=always",
+    "build": "react-build && electron-build",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "productName": "APV",
+  "build": {
+    "mac": {
+      "icon": "build/icon.png"
+    }
   },
   "eslintConfig": {
     "extends": [
